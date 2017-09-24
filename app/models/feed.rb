@@ -1,4 +1,4 @@
-class Feed
+class Feed < ActiveRecord::Base
 	require 'httparty'	
 
 	def self.fetch(sources)	
