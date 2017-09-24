@@ -1,6 +1,6 @@
 <a href="<%= entry.url %>" class="list-group-item" target="_blank">
 	<div class="row">
-		<div class="col-md-10 col-xs-12">  					
+		<div class="col-md-10 col-xs-12">
 			<h4 class="list-group-item-heading"><%= entry.title %></h4>
 			<h5 class="list-group-item-heading"><%= entry.source %>
 				<small>
@@ -9,23 +9,8 @@
 				</small>
 			</h5>			
 		</div>
-		
 
-		<div class="col-md-2 col-xs-12">
-			<%= image_tag entry.image, width: '100%' %>
-		</div>
-
-		<div class="hidden-md hidden-lg" style="height: 25px"></div>
-
-		<div class="col-md-10 col-xs-12">
-			<p class="list-group-item-text">
-				<%= entry.summary %>
-			</p>
-		</div>
-
-		<div class="col-md-2 hidden-xs"></div>
-
-		<div class="col-md-12 col-xs-12">
+		<div class="col-md-12 col-xs-12" style="margin-bottom: 10px;">
 			<% if entry.categories.any? then %>			    		
 				<% entry.categories.each do |category| %>
 					<span class="badge">
@@ -33,7 +18,17 @@
 					</span>
 				<% end %>			    		
 			<% end %>
-		</div>				
+		</div>		
+
+		<div class="col-md-2 col-xs-12" style="margin-bottom: 10px;">
+			<%= image_tag entry.image, width: '100%' %>
+		</div>		
+
+		<div class="col-md-10 col-xs-12" style="margin-bottom: 10px;">
+			<p class="list-group-item-text">
+				<%= entry.summary %>
+			</p>
+		</div>		
 		
 	</div>
 </a>
