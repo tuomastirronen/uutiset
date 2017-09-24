@@ -9,12 +9,11 @@ class Feed
 		Source.find_by_id(sources).each do |source|
 			xml = HTTParty.get(source.url).body
 			Feedjira::Feed.parse(xml).entries.take(30).each do |entry|
-				puts entry
 				entry.source = source.name
 				feed.push entry
 			end
 		end
 
-		feed.sort_by { |a| a["published"].to_date }.reverse
+		feed.sort_by { |a| a["published"] }.reverse
 	end
 end
