@@ -4,7 +4,7 @@
 @import "bootstrap-sprockets";
 
 // Import cerulean variables
-@import "bootswatch/journal/variables";
+@import "bootswatch/flatly/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
@@ -13,6 +13,6 @@
 body { padding-top: 60px; }
 
 // And finally bootswatch style itself
-@import "bootswatch/journal/bootswatch";
+@import "bootswatch/flatly/bootswatch";
 
 @import "home";

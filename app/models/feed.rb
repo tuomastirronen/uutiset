@@ -6,13 +6,14 @@ class Feed < ActiveRecord::Base
 		feed = Array.new
 
 		Source.find_by_id(s).each do |source|
-			xml = HTTParty.get(source.url).body			
+			xml = HTTParty.get(source.url).body
 			Feedjira::Feed.parse(xml).entries.each do |entry|
+				puts entry
 				entry.source = source.name
 				feed.push entry
 			end
 		end
 
-		feed.sort_by { |a| a["published"] }.reverse
+		feed.sort_by { |a| a["published"].to_date }.reverse
 	end
 end
