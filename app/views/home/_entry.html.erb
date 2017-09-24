@@ -2,29 +2,33 @@
 	<div class="row">
 		<div class="col-md-10">  					
 			<h4 class="list-group-item-heading"><%= entry.title %></h4>
-			<p class="list-group-item-text">
+			<h5 class="list-group-item-heading"><%= entry.source %>
 				<small>
 					<span class="glyphicon glyphicon-time"></span>
 					<%= entry.published.to_s(:long) %>
 				</small>
-			</p>
-			<br>
-			<p class="list-group-item-text">
-				<%= entry.summary %>
-			</p>
+			</h5>
+			
 			<% if entry.categories.any? then %>			    		
 				<% entry.categories.each do |category| %>
 					<span class="badge">
 						<%= category %>
 					</span>
 				<% end %>			    		
-			<% end %>			
+			<% end %>
+
+			<br>
+			<br>
+			<p class="list-group-item-text">
+				<%= entry.summary %>
+			</p>			
 		</div>
 
 		<div class="hidden-md hidden-lg" style="height: 25px"></div>
 
 		<div class="col-md-2 col-xs-12">
 			<%= image_tag entry.image, width: '100%' %>
-		</div>
+		</div>		
+		
 	</div>
 </a>
