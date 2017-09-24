@@ -1,11 +1,12 @@
-class Feed < ActiveRecord::Base
+class Feed
 	require 'httparty'	
 
-	def self.fetch(s)	
+	def self.fetch(sources)	
 		Feedjira::Feed.add_common_feed_element("source")	
+		
 		feed = Array.new
 
-		Source.find_by_id(s).each do |source|
+		Source.find_by_id(sources).each do |source|
 			xml = HTTParty.get(source.url).body
 			Feedjira::Feed.parse(xml).entries.each do |entry|
 				puts entry

@@ -8,20 +8,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="container">
-	<div class="row">
-      <div class="col-lg-12">
-        <div class="page-header">
-          <h1 id="typography">Uutiset</h1>
+  <div class="container">
+  	 <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="typography">Uutiset</h1>
+          </div>
         </div>
       </div>
-    </div>
-
-	<%= render 'layouts/navbar' %>
-	
-	<%= yield %>
-</div>
-
+  	<%= render 'layouts/navbar' %>
+  	<%= yield %>
+  </div>
 </body>
 </html>
