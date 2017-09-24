@@ -10,7 +10,11 @@ class Source
 	end
 
 	def self.find_by_id(id)
-		all.select{|source| id.include?(source.id)}
+		if id.nil? then
+			all
+		else
+			all.select{|source| id.include?(source.id)}
+		end		
 	end
 
 	def self.all

@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   	unless clean_params.empty? then
   		session[:sources] = clean_params
   	end
-  	@feed = Feed.fetch(session[:sources])  
+  	@feed = Feed.fetch(session[:sources])
   	@sources = Source.all  	
   end
 end

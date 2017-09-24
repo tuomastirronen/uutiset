@@ -7,12 +7,13 @@
 	            <!-- List group -->
 	            <ul class="list-group">                    
 	            	<% @sources.each do |source| %>
+	            		<% session_sources = session[:sources] || [] %>
 	                    <li class="list-group-item">
 	                        <%= source.name %>
 	                        <div class="material-switch pull-right">	                            
-	                        <%= check_box_tag source.id.parameterize.underscore,
-	                        	source.id.parameterize.underscore,
-	                        	session[:sources].include?(source.id.parameterize.underscore)
+	                        <%= check_box_tag source.id,
+	                        	source.id,
+	                        	session_sources.include?(source.id)
                         	%>
 	                            <label for="<%= source.id.parameterize.underscore %>" class="label-primary"></label>
 	                        </div>

@@ -8,7 +8,7 @@ class Feed
 
 		Source.find_by_id(sources).each do |source|
 			xml = HTTParty.get(source.url).body
-			Feedjira::Feed.parse(xml).entries.each do |entry|
+			Feedjira::Feed.parse(xml).entries.take(30).each do |entry|
 				puts entry
 				entry.source = source.name
 				feed.push entry
