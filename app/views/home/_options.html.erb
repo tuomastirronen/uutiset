@@ -1,0 +1,27 @@
+<%= form_tag("/", method: "get") do %>  
+	<div class="row">
+	    <div class="col-xs-12 col-sm-6 col-md-4">
+	        <div class="panel panel-default">
+	            <!-- Default panel contents -->
+	            <div class="panel-heading">Lähteet</div>
+	        
+	            <!-- List group -->
+	            <ul class="list-group">                    
+	            	<% @sources.each do |source| %>
+	                    <li class="list-group-item">
+	                        <%= source.name %>
+	                        <div class="material-switch pull-right">	                            
+	                        <%= check_box_tag source.id.parameterize.underscore,
+	                        	source.id.parameterize.underscore,
+	                        	session[:sources].include?(source.id.parameterize.underscore)
+                        	%>
+	                            <label for="<%= source.id.parameterize.underscore %>" class="label-primary"></label>
+	                        </div>
+	                    </li>
+	                <% end %>
+	            </ul>
+	        </div>            
+	        <%= submit_tag("Päivitä", :class => 'btn btn-primary') %>
+	    </div>
+	</div>
+<% end %>

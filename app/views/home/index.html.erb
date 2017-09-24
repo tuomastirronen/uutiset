@@ -1,0 +1,11 @@
+<div class="list-group">
+	<% @feed.entries.each do |entry| %>
+  		<%= render 'home/entry', entry: entry %>
+	<% end %>
+</div>
+
+<hr>
+
+<%= render 'home/options' %>
+
+<br>
