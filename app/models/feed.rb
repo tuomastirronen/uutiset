@@ -1,4 +1,4 @@
-class NewsDispenser < ActiveRecord::Base
+class Feed < ActiveRecord::Base
 	require 'httparty'	
 
 	def self.fetch(s)		
