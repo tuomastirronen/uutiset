@@ -1,6 +1,9 @@
 class HomeController < ApplicationController	
   def index  	
-  	session[:sources] = params.except('utf8', '✓', 'commit', 'Päivitä', 'controller', 'home', 'action', 'index').map{|param| param[0]}
+  	clean_params = params.except('utf8', '✓', 'commit', 'Päivitä', 'controller', 'home', 'action', 'index').map{|param| param[0]}
+  	unless clean_params.empty? then
+  		session[:sources] = clean_params
+  	end
   	@feed = Feed.fetch(session[:sources])  
   	@sources = Source.all  	
   end
