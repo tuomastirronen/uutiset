@@ -5,7 +5,7 @@
 			<h5 class="list-group-item-heading"><%= entry.source %>
 				<small>
 					<span class="glyphicon glyphicon-time"></span>
-					<%= entry.published.to_s(:long) %>
+					<%= entry.published.localtime.to_s(:long) %>
 				</small>
 			</h5>			
 		</div>
