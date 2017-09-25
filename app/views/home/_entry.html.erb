@@ -14,7 +14,7 @@
 			<% if entry.categories.any? then %>			    		
 				<% entry.categories.each do |category| %>
 					<span class="badge">
-						<%= category %>
+						<%= category.capitalize %>
 					</span>
 				<% end %>			    		
 			<% end %>

@@ -26,6 +26,7 @@ class Source
 		Source.new('il', 'Iltalehti', 'http://www.iltalehti.fi/rss/uutiset.xml'),
 		Source.new('is', 'Ilta-Sanomat', 'http://www.is.fi/rss/tuoreimmat.xml'),
 		Source.new('kl', 'Kauppalehti', 'https://feeds.kauppalehti.fi/rss/main'),
-		Source.new('tivi', 'Tietoviikko', 'http://www.tivi.fi/rss.xml')
+		Source.new('tivi', 'Tietoviikko', 'http://www.tivi.fi/rss.xml'),
+		Source.new('yle', 'YLE', 'https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_UUTISET')
 	]
 end
