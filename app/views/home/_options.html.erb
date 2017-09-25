@@ -1,10 +1,5 @@
 <%= form_tag("/", method: "get") do %>  
-	<div class="row">
-	    <div class="col-xs-12 col-sm-6 col-md-4">
-	        <div class="panel panel-default">
-	            <!-- Default panel contents -->
-	            <div class="panel-heading">Lähteet</div>	       
-	            <!-- List group -->
+	
 	            <ul class="list-group">                    
 	            	<% @sources.each do |source| %>
 	            		<% session_sources = session[:sources] || [] %>
@@ -20,11 +15,9 @@
 	                    </li>
 	                <% end %>
 	            </ul>
-	        </div>
+	
 	        <div class="">
-	        	<%= submit_tag("Päivitä", :class => 'btn btn-primary btn-block') %>
+	        	<%= submit_tag("Päivitä", :class => 'btn btn-primary') %>
 	        </div>
-	        <hr>
-	    </div>
-	</div>
+	
 <% end %>
