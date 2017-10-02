@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 gem 'feedjira'
 gem 'httparty'
 
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'nokogiri'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'bootswatch-rails'

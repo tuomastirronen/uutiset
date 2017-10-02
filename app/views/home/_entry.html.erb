@@ -1,11 +1,11 @@
-<a href="<%= entry.url %>" class="list-group-item" target="_blank">
+<a href="<%= entry.url %>" class="list-group-item" target="_blank" id="item-<%= entry.guid %>">
 	<div class="row">
 		<div class="col-md-10 col-xs-12">
 			<h4 class="list-group-item-heading"><%= entry.title %></h4>
 			<h5 class="list-group-item-heading"><%= entry.source %>
 				<small>
 					<span class="glyphicon glyphicon-time"></span>
-					<%= entry.published.localtime.to_s(:long) %>
+					<%= entry.published.localtime.to_s(:long) %>					
 				</small>
 			</h5>			
 		</div>
@@ -28,6 +28,12 @@
 			<p class="list-group-item-text">
 				<%= entry.summary %>
 			</p>
+		</div>
+
+		<div class="col-md-12 col-xs-12" style="margin-bottom: 10px;">
+			<%= button_to entry_update_path(:guid => entry.guid, :click_bait => true), remote: true, method: :patch, :class => "btn btn-default btn-xs click-bait", :id => entry.guid do %>
+				<span class="glyphicon glyphicon-trash"></span> Roskaa
+			<% end %>		
 		</div>
 	</div>
 </a>

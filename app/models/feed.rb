@@ -1,7 +1,9 @@
-class Feed
-	require 'httparty'	
-	require 'csv'
+class Feed	
+	require 'httparty'		
+	require 'openssl'
+	require 'open-uri'
 
+	# Returns the feed
 	def self.fetch(sources)	
 		Feedjira::Feed.add_common_feed_element("source")	
 		
@@ -18,13 +20,69 @@ class Feed
 		feed.sort_by { |a| a["published"] }.reverse
 	end
 
-	def self.write_csv(sources)
-		feed = fetch(sources)
-		
-		CSV.open("lib/assets/python/clustering/entries.csv", "w", {:col_sep => "|"}) do |csv|
-			feed.entries.each do |entry|
-				csv << [entry.title, entry.categories.first, entry.summary]
-			end
+	# Writes feed entries to database
+	def self.write_db(sources)
+		if sources.nil?
+			sources = Source.all.map { |source| source.id }.to_a
 		end
+		feed = fetch(sources)
+		feed.entries.each do |entry|
+			begin
+				Entry.create!(
+					:guid => entry.entry_id, 
+					:source => entry.source, 
+					:url => entry.url, 
+					:title => entry.title, 
+					:summary => entry.summary,
+					:published => entry.published,
+					:categories => entry.categories.join(","),
+					:image => entry.image,
+					:click_bait => false
+				)
+			rescue Exception => e
+				puts "#{e}"
+			end			
+		end
+	end
+
+	# Return finance data
+	def self.fetch_stock_prices
+		url = "https://www.kauppalehti.fi/5/i/porssi/"
+	    doc = Nokogiri::HTML(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
+
+	    entries = doc.css('div#nousijat_helsinki')[0]
+
+	    data = []
+
+	    entries.children.css('table/tbody/tr').each do |entry|
+	    	data.append [
+	    		entry.css('td')[0].text,
+	    		"#{entry.css('td')[1].text} EUR",
+	    		entry.css('td')[2].text
+	    	]
+	    end	 
+
+	    data.drop(1) # remove headers
+	end
+
+	def self.fetch_currencies
+		base_currency = 'eur'
+
+		currencies = [
+			{:currency => 'btc', :name => 'Bitcoin'},
+			{:currency => 'eth', :name => 'Ethereum'}
+		]
+		data = []
+
+		currencies.each do |currency|
+			url = "https://www.bitstamp.net/api/v2/ticker/#{currency[:currency]}#{base_currency}"			
+			response = JSON.load(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
+			data.append [
+				currency[:name],
+				"#{response['last']} EUR"
+			]
+		end		
+
+		data
 	end
 end

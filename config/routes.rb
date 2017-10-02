@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  patch 'entry/update'
+
   get 'home/index'
 
   root 'home#index'

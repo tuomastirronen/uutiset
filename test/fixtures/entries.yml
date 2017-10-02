@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guid: MyString
+  source: MyString
+  url: MyString
+  title: MyString
+  summary: MyString
+  published: MyString
+  click_bait: false
+  cluster: 1
+
+two:
+  guid: MyString
+  source: MyString
+  url: MyString
+  title: MyString
+  summary: MyString
+  published: MyString
+  click_bait: false
+  cluster: 1
