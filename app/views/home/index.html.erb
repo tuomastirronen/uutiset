@@ -1,18 +1,13 @@
-<% render 'home/options' %>
-
 <%= render 'home/finance' %>
 
-<div class="list-group">
-	<% @entries.each do |entry| %>
-  		<%= render 'home/entry', entry: entry %>
-	<% end %>
-</div>
+<%= render 'home/headlines' %>
 
-<%= will_paginate @entries %>
+<%= render 'home/entries' %>
 
 <script type="text/javascript">
   $(".click-bait").click(function(){
-    // document.getElementById("item-" + $(this).attr('id')).hide();
+  	var id = "#item-" + $(this).attr('id');  	
+    $(id).hide('fast');
   });
   
-</script>>
+</script>

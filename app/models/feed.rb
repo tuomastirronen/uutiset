@@ -1,5 +1,6 @@
 class Feed	
-	require 'httparty'		
+	require 'httparty'	
+	require 'json'	
 	require 'openssl'
 	require 'open-uri'
 
@@ -65,6 +66,7 @@ class Feed
 	    data.drop(1) # remove headers
 	end
 
+	# Return currency data
 	def self.fetch_currencies
 		base_currency = 'eur'
 
@@ -84,5 +86,10 @@ class Feed
 		end		
 
 		data
+	end
+
+	def self.fetch_headlines
+		file = File.read "lib/assets/classifier/data/headlines.json"
+		data = JSON.parse(file)['headlines']
 	end
 end

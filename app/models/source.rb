@@ -23,8 +23,7 @@ class Source
 
 	@sources = [
 		Source.new('hs', 'Helsingin Sanomat', 'http://www.hs.fi/rss/tuoreimmat.xml'),
-		Source.new('il', 'Iltalehti', 'http://www.iltalehti.fi/rss/uutiset.xml'),
-		Source.new('il-viihde', 'Iltalehti viihde', 'http://www.iltalehti.fi/rss/viihde.xml'),
+		Source.new('il', 'Iltalehti', 'http://www.iltalehti.fi/rss/uutiset.xml'),		
 		Source.new('is', 'Ilta-Sanomat', 'http://www.is.fi/rss/tuoreimmat.xml'),
 		Source.new('kl', 'Kauppalehti', 'https://feeds.kauppalehti.fi/rss/main'),
 		Source.new('tivi', 'Tietoviikko', 'http://www.tivi.fi/rss.xml'),

@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+		<div class="page-header">
+	      <h1 id="navbar">Kaikki uutiset</h1>
+	    </div>
+	</div>
+	<div class="col-md-12 col-sm-12">
+		<div class="list-group">
+			<% @entries.each do |entry| %>
+		  		<%= render 'home/entry', entry: entry %>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-12 col-sm-12">
+		<%= will_paginate @entries %>
+	</div>
+</div>

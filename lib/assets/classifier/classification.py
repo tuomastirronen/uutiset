@@ -9,16 +9,34 @@ import pickle
 import psycopg2
 import sys
 import string
+from string import punctuation
 from nltk.corpus import stopwords
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import GaussianNB, BernoulliNB
+import os
+import urlparse
 
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
-stop = stopwords.words('finnish')
+stop = set(stopwords.words('finnish') + list(punctuation))
 
-conn = psycopg2.connect("dbname='uutiset_development' host='localhost'")
+url = os.environ['DATABASE_URL']
+# url = 'postgresql://postgres:postgres@localhost/uutiset_development'
+
+result = urlparse.urlparse(url)
+
+username = result.username
+password = result.password
+database = result.path[1:]
+hostname = result.hostname
+
+conn = psycopg2.connect(
+    database = database,
+    user = username,
+    password = password,
+    host = hostname
+)
 
 try:
     df = pd.read_sql_query('SELECT guid, title, summary, click_bait from entries',con=conn)
@@ -63,18 +81,24 @@ featuresets = []
 for index, row in df.iterrows():
 	featuresets.append([find_features(row.text.split(' ')), row.click_bait])
 
-split = np.rint(len(df.index) * 0.5).astype(int)
+split = np.rint(len(df.index) * 0.2).astype(int)
 
 training_set = featuresets[:split]
 testing_set = featuresets[split:]
 
-# classifier_f = open('lib/assets/python/clustering/naivebayes.pickle', 'rb')
-# classifier = pickle.load(classifier_f) 
-# classifier_f.close()
+classifier_f = open('lib/assets/classifier/data/naivebayes.pickle', 'rb')
+classifier = pickle.load(classifier_f) 
+classifier_f.close()
 
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 print "NaiveBayesClassifier accuracy percent: ", (nltk.classify.accuracy(classifier, testing_set)) * 100
-
 classifier.show_most_informative_features(30)
 
-print classifier.classify(testing_set[1][0])
+# save_classifier = open('lib/assets/classifier/data/naivebayes.pickle', 'wb')
+# pickle.dump(classifier, save_classifier)
+# save_classifier.close()
+
+for index, row in df.iterrows():
+	print 'Prediction: ', classifier.classify(featuresets[index][0]), 'Real: ', row.click_bait, row.title
+
+# print classifier.classify(testing_set[1][0])
