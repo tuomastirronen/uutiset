@@ -70,23 +70,34 @@ class Feed
 	def self.fetch_currencies
 		base_currency = 'eur'
 
+
 		currencies = [
-			{:currency => 'btc', :name => 'Bitcoin'},
-			{:currency => 'eth', :name => 'Ethereum'}
+			{:currency => 'btc', :name => 'Bitcoin'} #,
+			# {:currency => 'eth', :name => 'Ethereum'}
 		]
 		data = []
 
 		currencies.each do |currency|
-			url = "https://www.bitstamp.net/api/v2/ticker/#{currency[:currency]}#{base_currency}"			
-			response = JSON.load(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
+			url = "https://api.coindesk.com/v1/bpi/historical/close.json?currency=#{base_currency}&for=yesterday"
+
+			compare_value = JSON.load(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))['bpi'].values[0].to_d
+
+			url = "https://www.bitstamp.net/api/v2/ticker/#{currency[:currency]}#{base_currency}"	
+			current_value = JSON.load(open(url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))['last'].to_d
+
+			change = (1 - compare_value / current_value) * 100
+
 			data.append [
-				currency[:name],
-				"#{response['last']} EUR"
+				currency[:name], # name
+				"#{current_value} EUR", # value
+				sprintf('%.2f%', change) # change
 			]
 		end		
 
 		data
 	end
+
+
 
 	def self.fetch_headlines
 		file = File.read "lib/assets/classifier/data/headlines.json"

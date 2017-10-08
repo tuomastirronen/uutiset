@@ -5,6 +5,7 @@
 	    </div>
 	</div>
 	<div class="col-md-6 col-sm-12">
+		<h4>OMXH</h4>
 		<table class="table table-striped table-hover ">
 		  <thead>
 		    <tr>
@@ -18,13 +19,18 @@
 			    <tr>
 			      <td><%= row[0] %></td>
 			      <td><%= row[1] %></td>
-			      <td><%= row[2] %></td>			      
+			      <% if row[2].to_d > 0 then %>
+			      	<td class="success"><%= row[2] %></td>
+		      	  <% else %>
+		      	  	<td class="danger"><%= row[2] %></td>
+		      	  <% end %>
 			    </tr>
 			<% end %>
 		  </tbody>
 		</table>
 	</div>
 	<div class="col-md-6 col-sm-12">
+		<h4>Kryptovaluutat</h4>
 		<table class="table table-striped table-hover ">
 		  <thead>
 		    <tr>
@@ -36,7 +42,12 @@
 		  	<% @currencies.each do |row| %>
 			    <tr>
 			      <td><%= row[0] %></td>
-			      <td><%= row[1] %></td>			      
+			      <td><%= row[1] %></td>
+			      <% if row[2].to_d > 0 then %>
+			      	<td class="success"><%= row[2] %></td>
+		      	  <% else %>
+		      	  	<td class="danger"><%= row[2] %></td>
+		      	  <% end %>
 			    </tr>
 			<% end %>
 		  </tbody>
