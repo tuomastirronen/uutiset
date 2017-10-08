@@ -71,7 +71,7 @@ with open('lib/assets/classifier/data/clusters.json','r+') as f:
 	for i in range(true_k):
 		content = df.summary.loc[df['cluster'] == i].str.cat(sep=' ')
 		cluster = {'id': i, 'content': content}
-		data['clusters'].append(cluster)		
+		data['clusters'].append(cluster)
 
 with open('lib/assets/classifier/data/clusters.json', 'w') as outfile:  
     json.dump(data, outfile)
