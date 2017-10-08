@@ -1,0 +1,5 @@
+<div class="col-md-12 col-xs-12" style="margin-bottom: 10px;">
+	<%= button_to entry_update_path(:guid => entry.guid, :click_bait => true), remote: true, method: :patch, :class => "btn btn-default btn-xs click-bait", :id => entry.guid do %>
+		<span class="glyphicon glyphicon-trash"></span> Roskaa
+	<% end %>		
+</div>
