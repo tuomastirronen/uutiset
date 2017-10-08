@@ -20,9 +20,9 @@
 			      <td><%= row[0] %></td>
 			      <td><%= row[1] %></td>
 			      <% if row[2].to_d > 0 then %>
-			      	<td class="success"><%= row[2] %></td>
+			      	<td class="success"><%= row[2] %> <span class="pull-right glyphicon glyphicon-triangle-top"></span></td>
 		      	  <% else %>
-		      	  	<td class="danger"><%= row[2] %></td>
+		      	  	<td class="danger"><%= row[2] %> <span class="pull-right glyphicon glyphicon-triangle-bottom"></span></td>
 		      	  <% end %>
 			    </tr>
 			<% end %>
@@ -44,9 +44,9 @@
 			      <td><%= row[0] %></td>
 			      <td><%= row[1] %></td>
 			      <% if row[2].to_d > 0 then %>
-			      	<td class="success"><%= row[2] %></td>
+			      	<td class="success"><%= row[2] %> <span class="pull-right glyphicon glyphicon-triangle-top"></span></td>
 		      	  <% else %>
-		      	  	<td class="danger"><%= row[2] %></td>
+		      	  	<td class="danger"><%= row[2] %> <span class="pull-right glyphicon glyphicon-triangle-bottom"></span></td>
 		      	  <% end %>
 			    </tr>
 			<% end %>
