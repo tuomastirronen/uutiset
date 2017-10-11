@@ -8,7 +8,7 @@ class Entry < ActiveRecord::Base
 	end
 
 	def click
-		self.clicks =+ 1
+		self.clicks += 1
 		self.save
 	end
 end
