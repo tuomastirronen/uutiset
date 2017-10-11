@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926130700) do
+ActiveRecord::Schema.define(version: 20171011111634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "entries", id: false, force: :cascade do |t|
-    t.string   "guid",       null: false
+    t.string   "guid",                   null: false
     t.string   "source"
     t.string   "url"
     t.string   "title"
@@ -25,10 +25,11 @@ ActiveRecord::Schema.define(version: 20170926130700) do
     t.datetime "published"
     t.boolean  "click_bait"
     t.integer  "cluster"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "categories"
     t.string   "image"
+    t.integer  "clicks",     default: 0
   end
 
   add_index "entries", ["guid"], name: "index_entries_on_guid", unique: true, using: :btree

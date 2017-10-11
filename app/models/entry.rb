@@ -6,4 +6,9 @@ class Entry < ActiveRecord::Base
 	def categories
 		self[:categories].split(',')
 	end
+
+	def click
+		self.clicks =+ 1
+		self.save
+	end
 end

@@ -1,4 +1,4 @@
-<a href="<%= entry.url %>" class="list-group-item" target="_blank" id="item-<%= entry.guid %>">
+<a href="<%= entry_open_path(:guid => entry.guid) %>" class="list-group-item" target="_blank" id="item-<%= entry.guid %>">
 	<div class="row">
 		<div class="col-md-10 col-xs-12">
 			<h4 class="list-group-item-heading"><%= entry.title %></h4>

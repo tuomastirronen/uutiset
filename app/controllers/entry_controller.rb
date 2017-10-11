@@ -1,7 +1,12 @@
 class EntryController < ApplicationController
-	before_action :set_entry, only: [:update]
-    def update    	
-    	puts "sfd"
+	before_action :set_entry, only: [:update, :open]
+	
+	def open
+		@entry.click
+		redirect_to @entry.url
+	end
+
+    def update    	    	
     	@entry.update(entry_params)
   	end
 
