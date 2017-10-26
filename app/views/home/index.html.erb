@@ -1,3 +1,14 @@
+<%= search_form_for(@q, :url => root_path) do |f| %>
+	<div class="form-group">	  
+	  <div class="input-group">	    
+	    <%= f.search_field :title_or_summary_or_categories_cont, :class => 'form-control' %>
+	    <span class="input-group-btn">
+	      <%= f.submit 'Etsi', :class => 'btn btn-primary' %>
+	    </span>
+	  </div>
+	</div>
+<% end %>
+
 <%= render 'home/finance' %>
 
 <% render 'home/headlines' %>

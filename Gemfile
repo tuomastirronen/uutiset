@@ -7,6 +7,8 @@ gem 'will_paginate', '~> 3.1.0'
 
 gem 'nokogiri'
 
+gem 'ransack'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'bootswatch-rails'
