@@ -1,12 +1,15 @@
 <%= search_form_for(@q, :url => root_path) do |f| %>
 	<div class="form-group">	  
 	  <div class="input-group">	    
-	    <%= f.search_field :title_or_summary_or_categories_cont, :class => 'form-control' %>
+	    <%= f.search_field :title_or_summary_or_categories_cont, :placeholder => 'Etsi uutisia...', :class => 'form-control' %>
 	    <span class="input-group-btn">
 	      <%= f.submit 'Etsi', :class => 'btn btn-primary' %>
-	    </span>
-	  </div>
+	    </span>	    
+	  </div>	  
 	</div>
+	<% if params[:q] then %>
+		<i class="text-muted"><%= @entries.count %> tulosta</i>
+	<% end %>
 <% end %>
 
 <%= render 'home/finance' %>
