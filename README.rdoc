@@ -1,6 +1,6 @@
 == README
 
-Demo: http://uutiset.herokuapp.com
+Demo: http://tdf.fi/
 
 docker-compose build
 
