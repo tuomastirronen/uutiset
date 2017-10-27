@@ -9,6 +9,8 @@ gem 'nokogiri'
 
 gem 'ransack'
 
+gem 'rufus-scheduler'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'bootswatch-rails'
