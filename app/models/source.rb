@@ -22,7 +22,7 @@ class Source
 	end
 
 	@sources = [
-		Source.new('reddit-bitcoin', 'A community dedicated to Bitcoin', 'https://www.reddit.com/r/Bitcoin/.rss'),
+		# Source.new('reddit-bitcoin', 'Reddit/Bitcoin', 'https://www.reddit.com/r/Bitcoin/.rss'),
 		Source.new('hs', 'Helsingin Sanomat', 'http://www.hs.fi/rss/tuoreimmat.xml'),
 		Source.new('il', 'Iltalehti', 'http://www.iltalehti.fi/rss/uutiset.xml'),		
 		Source.new('is', 'Ilta-Sanomat', 'http://www.is.fi/rss/tuoreimmat.xml'),

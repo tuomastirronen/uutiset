@@ -15,7 +15,12 @@ class Feed
 		Source.find_by_id(sources).each do |source|
 			xml = HTTParty.get(source.url).body
 			Feedjira::Feed.parse(xml).entries.take(30).each do |entry|
-				entry.source = source.name
+				begin
+					entry.source = source.name	
+				rescue Exception => e
+					puts e
+				end
+				
 				feed.push entry
 			end
 		end
