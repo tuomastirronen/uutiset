@@ -1,3 +1,5 @@
+# TODO: try-catch
+
 class Feed	
 	require 'httparty'	
 	require 'json'	
