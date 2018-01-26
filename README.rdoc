@@ -1,6 +1,6 @@
 == README
 
-Demo: http://tdf.fi/
+Demo: http://mediaforum.fi/
 
 docker-compose build
 
