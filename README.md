@@ -4,14 +4,14 @@ Simple news aggregator
 
 Demo: http://mediaforum.fi/
 
-## Add this extension to your Gemfile with this line:
+## Installation
 
-  docker-compose build
-
-  docker-compose up
-
-  docker-compose run web rake db:create
+    docker-compose build
   
-  docker-compose run web rake db:migrate
+    docker-compose up
+
+    docker-compose run web rake db:create
   
-  docker-compose up -d
+    docker-compose run web rake db:migrate
+  
+    docker-compose up -d
