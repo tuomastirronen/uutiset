@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require will_paginate_infinite
 //= require turbolinks
 //= require options
 //= require_tree .

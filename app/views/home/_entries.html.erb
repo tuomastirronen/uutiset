@@ -1,17 +1,17 @@
-<div class="row">
+<div id="entries" class="row">
 	<div class="col-md-12 col-sm-12">
 		<div class="page-header">
 	      <h1 id="navbar">Uutiset</h1>
 	    </div>
 	</div>
 	<div class="col-md-12 col-sm-12">
-		<div class="list-group">
+		<div class="list-entries list-group">
 			<% @entries.each do |entry| %>
 		  		<%= render 'home/entry', entry: entry %>
 			<% end %>
 		</div>
 	</div>
-	<div class="text-center col-md-12 col-sm-12">
-		<%= will_paginate @entries %>
+	<div id="infinite-scrolling" class="text-center col-md-12 col-sm-12">
+		<%= will_paginate @entries, renderer: WillPaginateInfinite::InfinitePagination %>
 	</div>
 </div>
